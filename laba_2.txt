@@ -19,18 +19,19 @@ pass
 def method_hord(a, b, eps):
 	iterator = 0
 	ya=calculation_function_derivative(a)
-	yb=
-	xi= a-((ya/(ya-yb))*(a-b))
-	yi = calculation_function_derivative(xi)
-	if abs(yi)<=eps:
-		x_min = xi
-		y_min = yi
-		print("!!!")
-		break
-	else:
-		if yi>0:
-			b=xi
+	yb=calculation_function_derivative(b)
+	while True:
+		xi= a-((ya/(ya-yb))*(a-b))
+		yi = calculation_function_derivative(xi)
+		if abs(yi)<=eps:
+			x_min = xi
+			y_min = yi
+			print("!!!")
+			break
 		else:
+			if yi>0:
+				b=xi
+			else:
 			
 		
 pass
