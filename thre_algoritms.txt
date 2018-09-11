@@ -1,0 +1,78 @@
+def method_step(a, b, eps):
+	y_min=calculation_function(a)
+	iterator = 0
+	xi = a
+	while True:
+		iterator = iterator + 1
+		delta = (abs(a)+abs(b))/4
+		xi = xi+delta
+		if xi>b:
+			print ("exit b > xi ? big delta")
+			break
+		yi= calculation_function(xi)
+		if yi>y_min:
+			if delta<=eps:
+				x_min = xi
+				y_min = calculation_function(x_min)
+				print ("colition iteration = " str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min))
+			a = xi
+			b = a
+			delta = (-1)*delta
+pass
+
+def dixotomii(a,b,eps):
+	iterator = 0
+	tetta=eps*1.5
+	while True:
+		iterator = iterator + 1
+		x1 = (b+a-tetta)/2
+		x2 = (b+a+tetta)/2
+		y1 = calculation_function(x1)
+		y2 = calculation_function(x2)
+		if y1 <= y2:
+			b=x2
+		else:
+			a=x1
+		U=(b-a)/2
+		if U<=eps:
+			x_min = (a+b)/2
+			y_min = calculation_function(x_min)
+			print ("colition iteration = " str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min))
+pass
+
+def gold_section(a, b, eps):
+	iterator = 0
+	t = (5**0.5 - 1)/2
+	x2 = a+t(b-a)
+	x1 = a+b-x2
+	y2 = calculation_function(x2)
+	y1 = calculation_function(x1)
+	while True:
+		iterator = iterator + 1
+		if y1<=y2:
+			b=x2
+			x2=x1
+			y2=y1
+			x1=a+b-x1
+			y1= calculation_function(x1)
+		else:
+			a=x1
+			x1=x2
+			y1=y2
+			x2=a+b-x2
+			y2 = calculation_function(x2)
+		U=(b-a)/2
+		if U<eps:
+			x_min = (a+b)/2
+			y_min = calculation_function(x_min)
+			print ("colition iteration = " str(iterator) + " x_min = " + str(xi) + " y_min = " + str(y_min))
+		
+pass
+
+def calculation_function(x):
+	y=x**4+x**2+x+1
+return y
+
+a = -1
+b = 0
+eps = 0.0001
