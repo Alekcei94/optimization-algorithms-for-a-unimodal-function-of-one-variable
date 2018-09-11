@@ -1,0 +1,50 @@
+def method_midpoint(a, b, eps)
+	iterator = 0
+	while True:
+		iterator = iterator + 1
+		xi = (a+b)/2
+		yi=calculation_function_derivative(xi)
+		if abs(yi)<=eps:
+			x_min = xi
+			y_min = y_min
+			print(" !! ")
+			break
+		else:
+			if yi>0:
+			b = xi
+		else:
+			a = xi
+pass
+
+def method_hord(a, b, eps):
+	iterator = 0
+	ya=calculation_function_derivative(a)
+	yb=
+	xi= a-((ya/(ya-yb))*(a-b))
+	yi = calculation_function_derivative(xi)
+	if abs(yi)<=eps:
+		x_min = xi
+		y_min = yi
+		print("!!!")
+		break
+	else:
+		if yi>0:
+			b=xi
+		else:
+			
+		
+pass
+
+def calculation_function_derivative(x):
+	y=0
+	y=4*(x**3) + 2*x + 1 
+return y
+
+def calculation_function(x):
+	y=0
+	y=x**4+x**2+x+1
+return y
+
+a = -1
+b = 0
+eps = 0.0001

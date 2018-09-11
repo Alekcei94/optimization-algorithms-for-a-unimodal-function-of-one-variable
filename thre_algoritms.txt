@@ -43,7 +43,7 @@ pass
 def gold_section(a, b, eps):
 	iterator = 0
 	t = (5**0.5 - 1)/2
-	x2 = a+t(b-a)
+	x2 = a+t*(b-a)
 	x1 = a+b-x2
 	y2 = calculation_function(x2)
 	y1 = calculation_function(x1)
@@ -76,3 +76,21 @@ return y
 a = -1
 b = 0
 eps = 0.0001
+while True:
+	print ("comands:" + "\n")
+	print ("1 - ;" + "\n")
+	print ("2 - method_step;" + "\n")
+	print ("3 - dixotomii;" + "\n")
+	print ("4 - gold_section;" + "\n")
+	print ("5 - exit." + "\n")
+	comands = input()
+	if comands==1:
+		
+	elif comands==2:
+		method_step(a, b, eps)
+	elif comands==3:
+		dixotomii(a, b, eps)
+	elif comands==4:
+		gold_section(a, b, eps)
+	elif comands==5:
+		break
