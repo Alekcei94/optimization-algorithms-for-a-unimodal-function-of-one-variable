@@ -4,21 +4,31 @@ def method_step(a, b, eps):
 	xi = a
 	while True:
 		iterator = iterator + 1
-		delta = (abs(a)+abs(b))/4
+		delta = (abs(a)+abs(b))/5
 		xi = xi+delta
 		if xi>b:
 			print ("exit b > xi ? big delta")
 			break
-		yi= calculation_function(xi)
+		yi = calculation_function(xi)
+		print ("y_min = " + str(y_min) + " yi = " + str(yi) + " delta = " + str(delta))
 		if yi>y_min:
 			if delta<=eps:
 				x_min = xi
 				y_min = calculation_function(x_min)
-				print ("colition iteration = " str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min))
+				print ("colition iteration = ") 
+				print (iterator) 
+				print (" x_min = ")
+				print (x_min) 
+				print (" y_min = ")
+				print (y_min)
+				break
 			a = xi
 			b = a
+			print ("!!!!")
 			delta = (-1)*delta
-pass
+		else:
+			y_min = yi
+	pass
 
 def dixotomii(a,b,eps):
 	iterator = 0
@@ -37,8 +47,14 @@ def dixotomii(a,b,eps):
 		if U<=eps:
 			x_min = (a+b)/2
 			y_min = calculation_function(x_min)
-			print ("colition iteration = " str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min))
-pass
+			print ("colition iteration = ") 
+			print (iterator) 
+			print (" x_min = ")
+			print (x_min) 
+			print (" y_min = ")
+			print (y_min)
+			break
+	pass
 
 def gold_section(a, b, eps):
 	iterator = 0
@@ -65,32 +81,40 @@ def gold_section(a, b, eps):
 		if U<eps:
 			x_min = (a+b)/2
 			y_min = calculation_function(x_min)
-			print ("colition iteration = " str(iterator) + " x_min = " + str(xi) + " y_min = " + str(y_min))
-		
-pass
+			print ("colition iteration = ") 
+			print (iterator) 
+			print (" x_min = ")
+			print (x_min) 
+			print (" y_min = ")
+			print (y_min)
+			break
+	pass
 
 def calculation_function(x):
+	y=0
 	y=x**4+x**2+x+1
-return y
+	return y
 
 a = -1
 b = 0
 eps = 0.0001
-while True:
-	print ("comands:" + "\n")
-	print ("1 - ;" + "\n")
-	print ("2 - method_step;" + "\n")
-	print ("3 - dixotomii;" + "\n")
-	print ("4 - gold_section;" + "\n")
-	print ("5 - exit." + "\n")
-	comands = input()
-	if comands==1:
-		
-	elif comands==2:
-		method_step(a, b, eps)
-	elif comands==3:
-		dixotomii(a, b, eps)
-	elif comands==4:
-		gold_section(a, b, eps)
-	elif comands==5:
-		break
+ 
+#while testt==0:
+print ("comands:")
+print ("1 - ;")
+print ("2 - method_step;")
+print ("3 - dixotomii;")
+print ("4 - gold_section;")
+print ("5 - exit.")
+comands = input()
+if int(comands)==1:
+	print ("test")
+elif int(comands)==2:
+	print ("123")
+	method_step(a, b, eps)
+elif int(comands)==3:
+	dixotomii(a, b, eps)
+elif int(comands)==4:
+	gold_section(a, b, eps)
+elif int(comands)==5:
+	testt = 1
