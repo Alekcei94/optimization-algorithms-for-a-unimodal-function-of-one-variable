@@ -1,31 +1,63 @@
+def method_midpoint(a, b, eps)
+	iterator = 0
+	while True:
+		iterator = iterator + 1
+		xi = (a+b)/2
+		yi=calculation_function_derivative(xi)
+		if abs(yi)<=eps:
+			x_min = xi
+			y_min = y_min
+			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
+			break
+		else:
+			if yi>0:
+			b = xi
+		else:
+			a = xi
+	pass
+
+def method_hord(a, b, eps):
+	iterator = 0
+	ya=calculation_function_derivative(a)
+	yb=calculation_function_derivative(b)
+	while True:
+		xi= a-((ya/(ya-yb))*(a-b))
+		yi = calculation_function_derivative(xi)
+		if abs(yi)<=eps:
+			x_min = xi
+			y_min = yi
+			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
+			break
+		else:
+			if yi>0:
+				b=xi
+			else:
+			
+		
+	pass
+
 def method_step(a, b, eps):
 	y_min=calculation_function(a)
 	iterator = 0
 	xi = a
+	direction = 1
 	while True:
 		iterator = iterator + 1
-		delta = (abs(a)+abs(b))/5
+		delta = (abs(a)+abs(b))/4 * direction
 		xi = xi+delta
 		if xi>b:
 			print ("exit b > xi ? big delta")
 			break
 		yi = calculation_function(xi)
-		print ("y_min = " + str(y_min) + " yi = " + str(yi) + " delta = " + str(delta))
 		if yi>y_min:
 			if delta<=eps:
 				x_min = xi
 				y_min = calculation_function(x_min)
-				print ("colition iteration = ") 
-				print (iterator) 
-				print (" x_min = ")
-				print (x_min) 
-				print (" y_min = ")
-				print (y_min)
+				print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
 				break
 			a = xi
 			b = a
-			print ("!!!!")
-			delta = (-1)*delta
+			direction = (-1)*direction
 		else:
 			y_min = yi
 	pass
@@ -47,12 +79,7 @@ def dixotomii(a,b,eps):
 		if U<=eps:
 			x_min = (a+b)/2
 			y_min = calculation_function(x_min)
-			print ("colition iteration = ") 
-			print (iterator) 
-			print (" x_min = ")
-			print (x_min) 
-			print (" y_min = ")
-			print (y_min)
+			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
 			break
 	pass
 
@@ -81,18 +108,17 @@ def gold_section(a, b, eps):
 		if U<eps:
 			x_min = (a+b)/2
 			y_min = calculation_function(x_min)
-			print ("colition iteration = ") 
-			print (iterator) 
-			print (" x_min = ")
-			print (x_min) 
-			print (" y_min = ")
-			print (y_min)
+			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
 			break
 	pass
 
 def calculation_function(x):
-	y=0
 	y=x**4+x**2+x+1
+	return y
+
+	
+def calculation_function_derivative(x):
+	y=4*(x**3) + 2*x + 1 
 	return y
 
 a = -1
@@ -105,16 +131,24 @@ print ("1 - ;")
 print ("2 - method_step;")
 print ("3 - dixotomii;")
 print ("4 - gold_section;")
-print ("5 - exit.")
+print ("5 - method_hord;")
+print ("6 - method_midpoint;")
+print ("7 - ;")
+print ("8 - exit.")
 comands = input()
 if int(comands)==1:
 	print ("test")
 elif int(comands)==2:
-	print ("123")
 	method_step(a, b, eps)
 elif int(comands)==3:
 	dixotomii(a, b, eps)
 elif int(comands)==4:
 	gold_section(a, b, eps)
+elif int(comands)==5:
+	method_hord(a, b, eps)
+elif int(comands)==5:
+	method_midpoint(a, b, eps)
+elif int(comands)==5:
+	testt = 1
 elif int(comands)==5:
 	testt = 1
