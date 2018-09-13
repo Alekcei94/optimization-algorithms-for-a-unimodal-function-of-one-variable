@@ -1,4 +1,4 @@
-def method_midpoint(a, b, eps)
+def method_midpoint(a, b, eps):
 	iterator = 0
 	while True:
 		iterator = iterator + 1
@@ -6,14 +6,14 @@ def method_midpoint(a, b, eps)
 		yi=calculation_function_derivative(xi)
 		if abs(yi)<=eps:
 			x_min = xi
-			y_min = y_min
+			y_min = calculation_function(xi)
 			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
 			break
 		else:
 			if yi>0:
-			b = xi
-		else:
-			a = xi
+				b = xi
+			else:
+				a = xi
 	pass
 
 def method_hord(a, b, eps):
@@ -25,39 +25,42 @@ def method_hord(a, b, eps):
 		yi = calculation_function_derivative(xi)
 		if abs(yi)<=eps:
 			x_min = xi
-			y_min = yi
+			y_min = calculation_function(xi)
 			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
 			break
 		else:
 			if yi>0:
 				b=xi
+				yb=yi
 			else:
-			
-		
+				a=xi
+				ya=yi
 	pass
 
 def method_step(a, b, eps):
 	y_min=calculation_function(a)
 	iterator = 0
 	xi = a
-	direction = 1
+	#direction = 1
+	delta = (abs(a)+abs(b))/2
 	while True:
 		iterator = iterator + 1
-		delta = (abs(a)+abs(b))/4 * direction
 		xi = xi+delta
 		if xi>b:
 			print ("exit b > xi ? big delta")
 			break
 		yi = calculation_function(xi)
+		print (" x = " + str(xi) + " y = " + str(yi) + " y_min = " + str(y_min) + " delta = " + str(delta))
 		if yi>y_min:
-			if delta<=eps:
+			if abs(delta)<=eps:
 				x_min = xi
 				y_min = calculation_function(x_min)
 				print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
 				break
-			a = xi
-			b = a
-			direction = (-1)*direction
+			#a = xi
+			#b = a
+			delta = delta/4 *(-1)
+			#direction = (-1)*direction
 		else:
 			y_min = yi
 	pass
@@ -146,9 +149,9 @@ elif int(comands)==4:
 	gold_section(a, b, eps)
 elif int(comands)==5:
 	method_hord(a, b, eps)
-elif int(comands)==5:
+elif int(comands)==6:
 	method_midpoint(a, b, eps)
-elif int(comands)==5:
+elif int(comands)==7:
 	testt = 1
-elif int(comands)==5:
+elif int(comands)==8:
 	testt = 1
