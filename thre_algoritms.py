@@ -114,7 +114,22 @@ def gold_section(a, b, eps):
 			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
 			break
 	pass
-
+	
+def method_all_point(a, b, eps):
+	iterator = 0
+	x_min = a
+	xi = a
+	y_min = calculation_function(a)
+	while True:
+		xi = xi + eps
+		if xi>b:
+			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
+		yi = calculation_function(xi)
+		if yi<y_min:
+			y_min = yi
+			x_min = xi
+	pass
+	
 def calculation_function(x):
 	y=x**4+x**2+x+1
 	return y
@@ -130,7 +145,7 @@ eps = 0.0001
  
 #while testt==0:
 print ("comands:")
-print ("1 - ;")
+print ("1 - method calculation all points;")
 print ("2 - method_step;")
 print ("3 - dixotomii;")
 print ("4 - gold_section;")
@@ -140,7 +155,7 @@ print ("7 - ;")
 print ("8 - exit.")
 comands = input()
 if int(comands)==1:
-	print ("test")
+	method_all_point(a, b, eps)
 elif int(comands)==2:
 	method_step(a, b, eps)
 elif int(comands)==3:
