@@ -21,6 +21,7 @@ def method_hord(a, b, eps):
 	ya=calculation_function_derivative(a)
 	yb=calculation_function_derivative(b)
 	while True:
+		iterator = iterator +1
 		xi= a-((ya/(ya-yb))*(a-b))
 		yi = calculation_function_derivative(xi)
 		if abs(yi)<=eps:
@@ -42,7 +43,7 @@ def method_step(a, b, eps):
 	iterator = 0
 	xi = a
 	#direction = 1
-	delta = (abs(a)+abs(b))/2
+	delta = (abs(a)+abs(b))/4
 	while True:
 		iterator = iterator + 1
 		xi = xi+delta
@@ -50,13 +51,14 @@ def method_step(a, b, eps):
 			print ("exit b > xi ? big delta")
 			break
 		yi = calculation_function(xi)
-		print (" x = " + str(xi) + " y = " + str(yi) + " y_min = " + str(y_min) + " delta = " + str(delta))
+		#print (" x = " + str(xi) + " y = " + str(yi) + " y_min = " + str(y_min) + " delta = " + str(delta))
 		if yi>y_min:
 			if abs(delta)<=eps:
 				x_min = xi
 				y_min = calculation_function(x_min)
 				print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
 				break
+			y_min = yi
 			#a = xi
 			#b = a
 			delta = delta/4 *(-1)
@@ -121,9 +123,11 @@ def method_all_point(a, b, eps):
 	xi = a
 	y_min = calculation_function(a)
 	while True:
+		iterator = iterator +1
 		xi = xi + eps
 		if xi>b:
 			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
+			break
 		yi = calculation_function(xi)
 		if yi<y_min:
 			y_min = yi
@@ -153,20 +157,21 @@ print ("5 - method_hord;")
 print ("6 - method_midpoint;")
 print ("7 - ;")
 print ("8 - exit.")
-comands = input()
-if int(comands)==1:
-	method_all_point(a, b, eps)
-elif int(comands)==2:
-	method_step(a, b, eps)
-elif int(comands)==3:
-	dixotomii(a, b, eps)
-elif int(comands)==4:
-	gold_section(a, b, eps)
-elif int(comands)==5:
-	method_hord(a, b, eps)
-elif int(comands)==6:
-	method_midpoint(a, b, eps)
-elif int(comands)==7:
-	testt = 1
-elif int(comands)==8:
-	testt = 1
+while True:
+	comands = input()
+	if int(comands)==1:
+		method_all_point(a, b, eps)
+	elif int(comands)==2:
+		method_step(a, b, eps)
+	elif int(comands)==3:
+		dixotomii(a, b, eps)
+	elif int(comands)==4:
+		gold_section(a, b, eps)
+	elif int(comands)==5:
+		method_hord(a, b, eps)
+	elif int(comands)==6:
+		method_midpoint(a, b, eps)
+	elif int(comands)==7:
+		break
+	elif int(comands)==8:
+		break
