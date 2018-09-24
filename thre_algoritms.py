@@ -1,13 +1,33 @@
+def method_Nutons(a, b, eps):
+	x0 = b
+	col_calculation_fanction = 0
+	iterator = 0
+	while True:
+		iterator = iterator + 1
+		xi = x0 - (calculation_function_derivative(x0)/calculation_function_two_derivative(x0))
+		x0=xi
+		col_calculation_fanction = col_calculation_fanction + 2
+		if abs(calculation_function_derivative(x0)) <= eps:
+			x_min = x0
+			y_min = calculation_function(x0)
+			col_calculation_fanction = col_calculation_fanction + 1
+			print ("colition iteration = " + str(iterator) + " colition calculation function = " + str(col_calculation_fanction) + " x_min = " + str(x_min) + " y_min = " + str(y_min))
+			break
+	pass
+
 def method_midpoint(a, b, eps):
 	iterator = 0
+	col_calculation_fanction = 0
 	while True:
 		iterator = iterator + 1
 		xi = (a+b)/2
 		yi=calculation_function_derivative(xi)
+		col_calculation_fanction = col_calculation_fanction + 1
 		if abs(yi)<=eps:
 			x_min = xi
 			y_min = calculation_function(xi)
-			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
+			col_calculation_fanction = col_calculation_fanction + 1
+			print ("colition iteration = " + str(iterator) + " colition calculation function  = " + str(col_calculation_fanction) + " x_min = " + str(x_min) + " y_min = " + str(y_min))
 			break
 		else:
 			if yi>0:
@@ -20,14 +40,17 @@ def method_hord(a, b, eps):
 	iterator = 0
 	ya=calculation_function_derivative(a)
 	yb=calculation_function_derivative(b)
+	col_calculation_fanction = 2
 	while True:
 		iterator = iterator +1
 		xi= a-((ya/(ya-yb))*(a-b))
 		yi = calculation_function_derivative(xi)
+		col_calculation_fanction = col_calculation_fanction + 1
 		if abs(yi)<=eps:
 			x_min = xi
 			y_min = calculation_function(xi)
-			print ("colition iteration = " + str(iterator) + " x_min = " + str(x_min) + " y_min = " + str(y_min)) 
+			col_calculation_fanction = col_calculation_fanction + 1
+			print ("colition iteration = " + str(iterator) + " colition calculation function = " + str(col_calculation_fanction) + " x_min = " + str(x_min) + " y_min = " + str(y_min))
 			break
 		else:
 			if yi>0:
@@ -137,25 +160,28 @@ def method_all_point(a, b, eps):
 def calculation_function(x):
 	y=x**4+x**2+x+1
 	return y
-
 	
 def calculation_function_derivative(x):
 	y=4*(x**3) + 2*x + 1 
 	return y
 
+def calculation_function_two_derivative(x):
+	y=12*(x**2) + 2 
+	return y
+	
 a = -1
 b = 0
-eps = 0.0001
- 
+eps = 0.00001
+
 #while testt==0:
 print ("comands:")
-print ("1 - method calculation all points;")
-print ("2 - method_step;")
-print ("3 - dixotomii;")
-print ("4 - gold_section;")
-print ("5 - method_hord;")
-print ("6 - method_midpoint;")
-print ("7 - ;")
+print ("1 - method calculation all points; lab_1")
+print ("2 - method_step; lab_1")
+print ("3 - dixotomii; lab_1")
+print ("4 - gold_section; lab_1")
+print ("5 - method_hord; lab_2")
+print ("6 - method_midpoint; lab_2")
+print ("7 - method Nuthons; lab_2")
 print ("8 - exit.")
 while True:
 	comands = input()
@@ -172,6 +198,6 @@ while True:
 	elif int(comands)==6:
 		method_midpoint(a, b, eps)
 	elif int(comands)==7:
-		break
+		method_Nutons(a, b, eps)
 	elif int(comands)==8:
 		break
