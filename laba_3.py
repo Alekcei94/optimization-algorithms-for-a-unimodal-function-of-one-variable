@@ -1,3 +1,5 @@
+import math
+
 def method_gradien_descent(eps):
 	print("")
 	pass
@@ -15,11 +17,27 @@ def calculation_function(x1, x2):
 	y = 129*x1*x1 - 256*x1*x2 + 129*x2*x2 - 51*x1 - 149*x2 - 27
 	return y
 
-def grad(x1, x2):
-	# (258*x1 - 256*x2 - 51) + (-256*x1 + 258*x2 - 149)
+def grad_p3(x1, x2):
+	#y = math.sqrt((258*x1 - 256*x2 - 51)**2 + (-256*x1 + 258*x2 - 149)**2)
 	y = 2*x1 + 2*x2 - 200 
 	return y
 
+def grad_p2(x1, x2):
+	return y
+	
+def partial_derivative_p3_x1(x1):
+	y = 258*x1 - 256*x2 - 51
+	return y
+	
+def partial_derivative_p3_x2(x2):
+	y = -256*x1 + 258*x2 - 149
+	return y
+	
+def partial_derivative_p2_x1(x1):
+	return y
+	
+def partial_derivative_p2_x1(x2):
+	return y
 	
 eps = 0.0001
 alfa
